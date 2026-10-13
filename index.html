@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ruah builds websites, software, workflow automations, Google and Meta ads, AI agents, custom LLM and RAG systems, analytics, and e-commerce.">
+  <meta name="theme-color" content="#07080c">
+  <meta property="og:title" content="RUAH — Digital systems studio">
+  <meta property="og:description" content="Websites, software, automation, advertising, and AI, composed as one system.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <title>RUAH — Websites, software, ads, and AI</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "RUAH",
+    "description": "Studio for websites, software, workflow automation, digital advertising, AI agents, custom LLM and RAG systems, analytics, and e-commerce.",
+    "email": "info@ruahdev.com",
+    "telephone": "+91 8105671387",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bangalore",
+      "addressRegion": "Karnataka",
+      "addressCountry": "India"
+    },
+    "areaServed": "Worldwide",
+    "knowsAbout": [
+      "Website development",
+      "Software development",
+      "Workflow automation",
+      "Google Ads",
+      "Meta Ads",
+      "AI agents",
+      "Large language models",
+      "Retrieval augmented generation",
+      "Analytics",
+      "Conversion optimization",
+      "E-commerce"
+    ]
+  }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    html { scroll-behavior: smooth; }
+    html.is-loading { overflow: hidden; }
+    html, body {
+      background: #07080c;
+      color: #e7e8ee;
+      font-family: Inter, sans-serif !important;
+      font-feature-settings: "blwf" on, "cv09" on, "cv03" on, "cv04" on, "cv11" on;
+    }
+    .font-display {
+      font-family: Inter, sans-serif !important;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+    h3 { font-weight: 600; letter-spacing: -0.03em; }
+    .icon-orb {
+      position: relative;
+      display: flex;
+      height: 2.75rem;
+      width: 2.75rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(198, 220, 255, 0.28), rgba(198, 220, 255, 0.05) 42%, transparent 70%);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 22px rgba(168, 198, 255, 0.28);
+    }
+    .icon-orb::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      box-shadow: inset 0 0 10px rgba(190, 214, 255, 0.28);
+    }
+    .stat-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 13rem;
+      padding: 3.25rem 0.25rem 0;
+    }
+    .stat-bar {
+      width: 2px;
+      flex-shrink: 0;
+      border-radius: 999px;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.92));
+      position: relative;
+    }
+    .stat-bar.is-peak::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      width: 1px;
+      height: 2.5rem;
+      background: #fff;
+      transform: translateX(-50%);
+    }
+    .stat-bar.is-peak::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 2.15rem);
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid #fff;
+      border-radius: 999px;
+      background: radial-gradient(circle, #fff 1.6px, #07080c 2.2px);
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06);
+      transform: translateX(-50%);
+    }
+    @media (min-width: 1024px) {
+      .stat-chart {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 34%;
+        height: 19rem;
+        padding-right: 2.5rem;
+      }
+    }
+    section[id], article[id], footer[id] { scroll-margin-top: 5.5rem; }
+    summary::-webkit-details-marker { display: none; }
+    summary { list-style: none; }
+    ::selection { background: rgba(255, 255, 255, 0.16); color: #fff; }
+    :focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.85);
+      outline-offset: 3px;
+    }
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow:
+        8vw 12vh #fff, 18vw 28vh rgba(255,255,255,.55), 27vw 8vh rgba(255,255,255,.35),
+        41vw 18vh #fff, 52vw 7vh rgba(255,255,255,.4), 63vw 22vh rgba(255,255,255,.7),
+        74vw 11vh rgba(255,255,255,.45), 86vw 19vh #fff, 93vw 6vh rgba(255,255,255,.3),
+        14vw 46vh rgba(255,255,255,.35), 33vw 58vh rgba(255,255,255,.5), 48vw 42vh rgba(255,255,255,.25),
+        67vw 51vh #fff, 81vw 63vh rgba(255,255,255,.4), 22vw 78vh rgba(255,255,255,.3),
+        58vw 84vh rgba(255,255,255,.45), 90vw 74vh rgba(255,255,255,.28), 6vw 88vh rgba(255,255,255,.4);
+    }
+    .noise {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      opacity: .045;
+      mix-blend-mode: overlay;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes glow {
+      0%, 100% { opacity: .45; }
+      50% { opacity: .95; }
+    }
+    .spin-slow { animation: spin-slow 56s linear infinite; }
+    .spin-slower { animation: spin-slow 90s linear infinite reverse; }
+    .pulse-glow { animation: glow 6s ease-in-out infinite; }
+    .animate-marquee { animation: marquee 42s linear infinite; }
+    .marquee-wrap:hover .animate-marquee { animation-play-state: paused; }
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #07080c;
+      transition: opacity .55s ease, visibility .55s ease;
+    }
+    #loader.is-done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-logo {
+      height: 2rem;
+      width: auto;
+      animation: loader-in .7s cubic-bezier(.22, 1, .36, 1) both;
+    }
+    .loader-track {
+      margin-top: 1.75rem;
+      height: 1px;
+      width: 9rem;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .14);
+    }
+    .loader-bar {
+      display: block;
+      height: 100%;
+      transform-origin: left center;
+      background: #fff;
+      animation: loader-bar 1.05s cubic-bezier(.4, 0, .2, 1) forwards;
+    }
+    .rise {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .85s cubic-bezier(.22, 1, .36, 1);
+    }
+    .rise.is-in { opacity: 1; transform: none; }
+    .stat-chart.is-armed .stat-bar {
+      transform: scaleY(0);
+      transform-origin: bottom center;
+      transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+    }
+    .stat-chart.is-in .stat-bar { transform: scaleY(1); }
+    .hero-copy, .hero-media { animation: rise .85s cubic-bezier(.22, 1, .36, 1) both; }
+    .hero-media { animation-delay: .12s; }
+    html.is-loading .hero-copy,
+    html.is-loading .hero-media { animation: none; opacity: 0; }
+    @keyframes loader-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes loader-bar {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      #loader { display: none; }
+      .rise, .hero-copy, .hero-media { opacity: 1; transform: none; animation: none; transition: none; }
+      .stat-chart.is-armed .stat-bar { transform: none; transition: none; }
+      .spin-slow, .spin-slower, .pulse-glow, .animate-marquee, .loader-logo, .loader-bar { animation: none !important; }
+    }
+    select option { background: #12141a; color: #f4f4f5; }
+  </style>
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("is-loading");
+    }
+  </script>
+</head>
+<body id="top" class="antialiased">
+  <div id="loader" role="status" aria-live="polite" aria-label="Loading RUAH">
+    <img src="ruah-logo.png" alt="" class="loader-logo">
+    <div class="loader-track" aria-hidden="true"><span class="loader-bar"></span></div>
+  </div>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-[#07080c]">Skip to content</a>
+
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-[#07080c]"></div>
+    <div class="stars absolute left-0 top-0"></div>
+    <div class="noise absolute inset-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(7,8,12,0.72)_100%)]"></div>
+  </div>
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#07080c]/75 backdrop-blur-xl">
+    <div class="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-8">
+      <a href="#top" class="inline-flex items-center">
+        <img src="ruah-logo.png" alt="RUAH" class="h-7 w-auto sm:h-8">
+      </a>
+
+      <nav class="hidden items-center gap-7 text-sm text-white/70 md:flex" aria-label="Primary">
+        <a class="transition hover:text-white" href="#services">Services</a>
+        <a class="transition hover:text-white" href="#start">Start</a>
+        <a class="hidden transition hover:text-white lg:inline" href="#stories">Stories</a>
+        <a class="hidden transition hover:text-white lg:inline" href="#faq">Questions</a>
+        <a href="#contact" class="rounded-full bg-white px-4 py-2 text-sm font-medium text-[#07080c] transition hover:bg-white/90">Start a project</a>
+      </nav>
+
+      <details class="group relative md:hidden">
+        <summary class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15" aria-label="Open menu">
+          <svg class="h-4 w-4 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+          <svg class="hidden h-4 w-4 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+        </summary>
+        <nav class="absolute right-0 z-50 mt-3 w-56 rounded-2xl border border-white/10 bg-[#0e1016]/95 p-2 shadow-2xl backdrop-blur-xl" aria-label="Mobile">
+          <a class="block rounded-xl px-3 py-2.5 text-sm text-white/80 hover:bg-white/5" href="#services">Services</a>
+          <a class="block rounded-xl px-3 py-2.5 text-sm text-white/80 hover:bg-white/5" href="#start">Start</a>
+          <a class="block rounded-xl px-3 py-2.5 text-sm text-white/80 hover:bg-white/5" href="#stories">Stories</a>
+          <a class="block rounded-xl px-3 py-2.5 text-sm text-white/80 hover:bg-white/5" href="#faq">Questions</a>
+          <a class="mt-1 block rounded-xl bg-white px-3 py-2.5 text-center text-sm font-medium text-[#07080c]" href="#contact">Start a project</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="relative overflow-hidden pt-8 sm:pt-14 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:flex-col lg:pt-12" aria-labelledby="hero-title">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-[760px] bg-[radial-gradient(ellipse_at_top,rgba(198,214,255,0.18),transparent_52%)]"></div>
+      <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:84px_84px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]"></div>
+
+      <div class="hero-copy relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
+        <h1 id="hero-title" class="font-display mx-auto max-w-4xl text-[2.35rem] leading-[1.08] text-white sm:text-6xl sm:leading-[1.1] lg:text-[4.7rem]">
+          We build the systems your company runs on.
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-white/65 sm:mt-5 sm:text-lg sm:leading-7">
+          Ruah designs and ships websites, software, automations, advertising, and AI. The pieces are built to work together, from the first click to the work that happens after someone says yes.
+        </p>
+        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="#contact" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-[#07080c] transition hover:bg-white/90 sm:w-auto">
+            Start a project
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm text-white/85 transition hover:bg-white/5 sm:w-auto">Explore the practices</a>
+        </div>
+      </div>
+
+      <div class="hero-media relative z-10 mt-8 w-full px-5 sm:px-8 lg:mt-auto lg:px-0 lg:pt-16">
+        <video id="hero-reel" class="aspect-[326/61] w-full rounded-2xl border border-white/10 bg-[#0c0e14] object-cover lg:rounded-none lg:border-0" autoplay muted loop playsinline preload="auto" aria-label="Reel of branding and product work">
+          <source src="vvvvv.webm" type="video/webm">
+        </video>
+        <div class="marquee-wrap -mx-5 mt-6 overflow-hidden border-y border-white/10 sm:-mx-8 lg:mx-0 lg:mt-0" aria-hidden="true">
+      <div class="animate-marquee flex w-max">
+        <div class="flex shrink-0 items-center gap-8 py-4 pr-8 text-sm text-white/55">
+          <span>Website development</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Software development</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Workflow automations</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Google Ads</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Meta Ads</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>AI agents</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Custom LLM</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>RAG</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Analytics</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Conversion</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>E-commerce</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+        </div>
+        <div class="flex shrink-0 items-center gap-8 py-4 pr-8 text-sm text-white/55">
+          <span>Website development</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Software development</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Workflow automations</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Google Ads</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Meta Ads</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>AI agents</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Custom LLM</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>RAG</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Analytics</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>Conversion</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+          <span>E-commerce</span><span class="h-1 w-1 rounded-full bg-white/30"></span>
+        </div>
+      </div>
+    </div>
+      </div>
+    </section>
+
+    <section id="services" class="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32" aria-labelledby="services-title">
+      <div class="max-w-2xl">
+        <p class="text-xs uppercase tracking-[0.28em] text-white/45">01 — Services</p>
+        <h2 id="services-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">What we build.</h2>
+        <p class="mt-5 text-base leading-7 text-white/65 sm:text-lg">Eight services, designed to work as one system. From the first visit to the work that happens after.</p>
+      </div>
+
+      <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a id="website" href="#contact" data-service="Website Development" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">Website Development</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Marketing sites and landing pages built for speed, clarity, and the click that follows an ad.</p>
+        </a>
+
+        <a id="software" href="#contact" data-service="Software Development" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9l-2.5 3L8 15M12 15h5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">Software Development</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Internal tools, portals, and products shaped around the way your team actually works.</p>
+        </a>
+
+        <a id="automation" href="#contact" data-service="Workflow Automations" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="18" cy="17" r="2"/><path d="M8 12h8M8.2 11.2 16 8.2M8.2 12.8 16 15.8" stroke-linecap="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">Workflow Automation</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">The handoffs between your tools, carried by the system, including the exceptions.</p>
+        </a>
+
+        <a id="advertising" href="#contact" data-service="Digital Advertising" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10v4h3l5 3V7L7 10H4z" stroke-linejoin="round"/><path d="M16 9.2a3.8 3.8 0 0 1 0 5.6" stroke-linecap="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">Google &amp; Meta Ads</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Search and social planned with the page, the offer, and the conversion in one loop.</p>
+        </a>
+
+        <a id="ai" href="#contact" data-service="AI Solutions &amp; AI Agents" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3.5 13.1 9 18.5 12 13.1 15 12 20.5 10.9 15 5.5 12 10.9 9 12 3.5z" stroke-linejoin="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">AI Agents</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Assistants that qualify, answer, and take the next step, with a person approving what matters.</p>
+        </a>
+
+        <a id="llm" href="#contact" data-service="Custom LLM &amp; RAG" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 7.5 12 12l8-4.5L12 3zM4 12.5 12 17l8-4.5M4 16.5 12 21l8-4.5" stroke-linejoin="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">Custom LLM &amp; RAG</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Models that answer from your documents, catalog, and policies, and show the source.</p>
+        </a>
+
+        <a id="analytics" href="#contact" data-service="Analytics &amp; Conversion" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V11M10 19V6M16 19v-6M3 19h18" stroke-linecap="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">Analytics &amp; Conversion</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Tracking you can trust, then changes to the pages and offers that create revenue.</p>
+        </a>
+
+        <a id="ecommerce" href="#contact" data-service="E-commerce Solutions" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
+          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 8h11l-.8 11H7.3L6.5 8z" stroke-linejoin="round"/><path d="M9 8V7a3 3 0 0 1 6 0v1" stroke-linecap="round"/></svg></span>
+          <h3 class="mt-7 text-[15px] leading-snug text-white">E-commerce</h3>
+          <p class="mt-2 text-sm leading-6 text-white/50">Stores built to be fast and clear, from the catalog through checkout and the note after the order.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="relative overflow-hidden border-y border-white/10" aria-labelledby="proof-title">
+      <div class="relative z-10 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:pb-28 lg:pt-28">
+        <p class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] py-1 pl-1 pr-3 text-xs text-white/70">
+          <span class="icon-orb !h-6 !w-6 shadow-none" aria-hidden="true">
+            <svg class="relative h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          One system, end to end
+        </p>
+        <h2 id="proof-title" class="font-display mt-6 max-w-xl text-4xl leading-[1.1] text-white sm:text-5xl lg:text-[3.4rem]">Helping companies get more done with one system.</h2>
+        <dl class="mt-10 flex max-w-xl flex-col gap-8 sm:flex-row sm:items-stretch sm:gap-0">
+          <div class="sm:pr-8">
+            <dt class="font-display text-5xl text-white sm:text-6xl">8</dt>
+            <dd class="mt-2 max-w-[9rem] text-sm leading-5 text-white/45">Services, one studio</dd>
+          </div>
+          <div class="hidden w-px self-stretch bg-white/15 sm:block" aria-hidden="true"></div>
+          <div class="sm:px-8">
+            <dt class="font-display text-5xl text-white sm:text-6xl">1</dt>
+            <dd class="mt-2 max-w-[9rem] text-sm leading-5 text-white/45">Scope after the first call</dd>
+          </div>
+          <div class="hidden w-px self-stretch bg-white/15 sm:block" aria-hidden="true"></div>
+          <div class="sm:pl-8">
+            <dt class="font-display text-5xl text-white sm:text-6xl">2</dt>
+            <dd class="mt-2 max-w-[9rem] text-sm leading-5 text-white/45">Google and Meta</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="stat-chart pointer-events-none" aria-hidden="true">
+        <span class="stat-bar" style="height:8%"></span> <span class="stat-bar" style="height:9%"></span> <span class="stat-bar" style="height:11%"></span> <span class="stat-bar" style="height:12%"></span> <span class="stat-bar" style="height:14%"></span> <span class="stat-bar" style="height:16%"></span> <span class="stat-bar" style="height:17%"></span> <span class="stat-bar" style="height:19%"></span> <span class="stat-bar" style="height:21%"></span> <span class="stat-bar" style="height:23%"></span> <span class="stat-bar" style="height:25%"></span> <span class="stat-bar" style="height:27%"></span> <span class="stat-bar" style="height:29%"></span> <span class="stat-bar" style="height:31%"></span> <span class="stat-bar" style="height:33%"></span> <span class="stat-bar" style="height:35%"></span> <span class="stat-bar" style="height:37%"></span> <span class="stat-bar" style="height:39%"></span> <span class="stat-bar" style="height:41%"></span> <span class="stat-bar" style="height:43%"></span> <span class="stat-bar" style="height:45%"></span> <span class="stat-bar" style="height:48%"></span> <span class="stat-bar" style="height:50%"></span> <span class="stat-bar" style="height:52%"></span> <span class="stat-bar" style="height:54%"></span> <span class="stat-bar" style="height:56%"></span> <span class="stat-bar" style="height:59%"></span> <span class="stat-bar" style="height:61%"></span> <span class="stat-bar" style="height:63%"></span> <span class="stat-bar" style="height:65%"></span> <span class="stat-bar" style="height:68%"></span> <span class="stat-bar" style="height:70%"></span> <span class="stat-bar" style="height:72%"></span> <span class="stat-bar" style="height:75%"></span> <span class="stat-bar" style="height:77%"></span> <span class="stat-bar" style="height:79%"></span> <span class="stat-bar" style="height:82%"></span> <span class="stat-bar" style="height:84%"></span> <span class="stat-bar" style="height:86%"></span> <span class="stat-bar" style="height:89%"></span> <span class="stat-bar" style="height:91%"></span> <span class="stat-bar" style="height:94%"></span> <span class="stat-bar" style="height:96%"></span> <span class="stat-bar" style="height:98%"></span> <span class="stat-bar is-peak" style="height:92%"></span> <span class="stat-bar" style="height:90%"></span> <span class="stat-bar" style="height:87%"></span> <span class="stat-bar" style="height:84%"></span> <span class="stat-bar" style="height:81%"></span> <span class="stat-bar" style="height:78%"></span> <span class="stat-bar" style="height:75%"></span> <span class="stat-bar" style="height:72%"></span> <span class="stat-bar" style="height:69%"></span> <span class="stat-bar" style="height:66%"></span> <span class="stat-bar" style="height:63%"></span> <span class="stat-bar" style="height:60%"></span> <span class="stat-bar" style="height:57%"></span> <span class="stat-bar" style="height:54%"></span> <span class="stat-bar" style="height:51%"></span> <span class="stat-bar" style="height:48%"></span>
+      </div>
+    </section>
+
+    <section id="start" class="border-t border-white/10" aria-labelledby="start-title">
+      <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+        <div class="max-w-2xl">
+          <p class="text-xs uppercase tracking-[0.28em] text-white/45">02 — Start here</p>
+          <h2 id="start-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">Where should we start?</h2>
+          <p class="mt-5 text-base leading-7 text-white/65 sm:text-lg">Pick the problem closest to yours. The brief opens with that work already selected.</p>
+        </div>
+
+        <div class="mt-14 grid gap-4 lg:grid-cols-3">
+          <article class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-7">
+            <h3 class="text-xl text-white">People visit, and too few become customers.</h3>
+            <p class="mt-4 text-sm leading-6 text-white/60">We build the page, run Google Ads and Meta Ads against it, and measure the visits that turn into leads or orders.</p>
+            <p class="mt-4 text-sm text-white/40">Websites · Ads · Analytics</p>
+            <a href="#contact" data-service="Digital Advertising" class="mt-auto inline-flex items-center gap-2 pt-8 text-sm text-white">Start with this <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-7">
+            <h3 class="text-xl text-white">The team repeats the same steps by hand.</h3>
+            <p class="mt-4 text-sm leading-6 text-white/60">We connect the tools you already use, and put an agent on the steps a person should only approve.</p>
+            <p class="mt-4 text-sm text-white/40">Automations · AI agents · Custom LLM</p>
+            <a href="#contact" data-service="Workflow Automations" class="mt-auto inline-flex items-center gap-2 pt-8 text-sm text-white">Start with this <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-7">
+            <h3 class="text-xl text-white">The product or store does not match how you sell.</h3>
+            <p class="mt-4 text-sm leading-6 text-white/60">We design and build the software, the shop, or the buying flow your team can run after launch.</p>
+            <p class="mt-4 text-sm text-white/40">Software · E-commerce</p>
+            <a href="#contact" data-service="Software Development" class="mt-auto inline-flex items-center gap-2 pt-8 text-sm text-white">Start with this <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+
+        <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p class="max-w-xl text-sm leading-6 text-white/55">If more than one of these is true, say so in the brief. We will answer with a scope for the first release.</p>
+          <a href="#contact" data-service="Not sure yet" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-[#07080c] transition hover:bg-white/90">
+            Start a project
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="stories" class="border-t border-white/10" aria-labelledby="stories-title">
+      <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 id="stories-title" class="font-display text-4xl leading-[1.1] text-white sm:text-6xl">Real work. Clear results.</h2>
+          <p class="mt-4 text-sm leading-6 text-white/55 sm:text-base">Teams use Ruah when the site, the ads, and the follow-through need to work as one system.</p>
+        </div>
+
+        <div class="mt-14 grid items-stretch gap-4 lg:grid-cols-3">
+          <article class="flex h-full flex-col rounded-[28px] border border-white/10 bg-[#0e1219] p-6 sm:p-7">
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="relative h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3.5 13.2 9 18.5 12 13.2 15 12 20.5 10.8 15 5.5 12 10.8 9 12 3.5z" stroke-linejoin="round"/></svg>
+            </span>
+            <p class="mt-8 text-lg leading-7 text-white">“The website, the ads, and the follow-up finally live in one place. We stopped passing the same lead between tools.”</p>
+            <div class="mt-8 flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,#e7eef8,#7d8ba3)] text-xs font-medium text-[#151820]" aria-hidden="true">AS</span>
+              <div>
+                <p class="text-sm text-white">Amira Shah</p>
+                <p class="text-xs text-white/45">Director of Operations</p>
+              </div>
+            </div>
+            <a href="#contact" class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-white to-zinc-300 px-5 py-3 text-sm font-medium text-[#12141a] transition hover:from-white hover:to-white">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8 13.1 8.2 18.4 9.2 13.1 10.3 12 15.6 10.9 10.3 5.6 9.2 10.9 8.2 12 2.8z"/></svg>
+              Start a project
+            </a>
+          </article>
+
+          <div class="flex h-full flex-col gap-4">
+            <article class="flex flex-1 flex-col rounded-[28px] border border-white/10 bg-[#0e1219] p-6">
+              <p class="text-base leading-7 text-white">“The repeatable steps run on their own. People spend their time on the work that actually needs them.”</p>
+              <div class="mt-auto flex items-center justify-between gap-3 pt-6">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,#f0e6d8,#8d7764)] text-xs font-medium text-[#1a1612]" aria-hidden="true">JH</span>
+                  <div>
+                    <p class="text-sm text-white">Jonah Hale</p>
+                    <p class="text-xs text-white/45">Founder</p>
+                  </div>
+                </div>
+                <span class="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 text-white/50" aria-hidden="true">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+                </span>
+              </div>
+            </article>
+            <article class="flex flex-1 flex-col rounded-[28px] border border-white/10 bg-[#0e1219] p-6">
+              <p class="text-base leading-7 text-white">“We can see which visits become customers. The page and the ad spend finally agree.”</p>
+              <div class="mt-auto flex items-center justify-between gap-3 pt-6">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,#efe4f4,#8a7396)] text-xs font-medium text-[#1a1420]" aria-hidden="true">EV</span>
+                  <div>
+                    <p class="text-sm text-white">Elena Voss</p>
+                    <p class="text-xs text-white/45">Head of Marketing</p>
+                  </div>
+                </div>
+                <svg class="h-5 w-5 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M9 19l10-10M13 19l6-6" stroke-linecap="round"/></svg>
+              </div>
+            </article>
+          </div>
+
+          <div class="flex h-full flex-col gap-4">
+            <article class="flex min-h-[128px] items-center justify-center gap-3 rounded-[28px] border border-white/10 bg-[#0e1219] px-6">
+              <svg class="h-7 w-7 text-white" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 22c4-8 6-8 10 0s6 8 10 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="16" cy="10" r="2.2" fill="currentColor"/></svg>
+              <p class="text-2xl font-semibold tracking-tight text-white">Fieldwork</p>
+            </article>
+            <article class="flex flex-1 flex-col rounded-[28px] border border-white/10 bg-[#0e1219] p-6">
+              <p class="text-base leading-7 text-white">“It works like another pair of hands, and a person still approves anything that matters.”</p>
+              <div class="mt-auto flex items-center gap-3 pt-6">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,#dceee4,#6f8f7c)] text-xs font-medium text-[#121a16]" aria-hidden="true">CA</span>
+                <div>
+                  <p class="text-sm text-white">Chris Adeyemi</p>
+                  <p class="text-xs text-white/45">Product Lead</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="border-t border-white/10" aria-labelledby="faq-title">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 sm:py-32 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-white/45">03 — Questions</p>
+          <h2 id="faq-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">Before the first call.</h2>
+        </div>
+        <div class="border-t border-white/10">
+          <details class="group border-b border-white/10" open>
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5">
+              <h3 class="text-base font-medium text-white sm:text-lg">What does Ruah actually take on?</h3>
+              <span class="text-xl text-white/40 transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-xl pb-5 text-sm leading-6 text-white/65">Websites, software, workflow automations, Google Ads and Meta Ads, AI agents, custom LLM and RAG systems, analytics and conversion work, and e-commerce. Most engagements combine two or three of these, because they depend on each other.</p>
+          </details>
+          <details class="group border-b border-white/10">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5">
+              <h3 class="text-base font-medium text-white sm:text-lg">Can you work with what we already have?</h3>
+              <span class="text-xl text-white/40 transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-xl pb-5 text-sm leading-6 text-white/65">Yes. A site that already ranks, an ad account with history, a stack of tools, a store that is live. We start from the constraint in front of you and keep what is working.</p>
+          </details>
+          <details class="group border-b border-white/10">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5">
+              <h3 class="text-base font-medium text-white sm:text-lg">How does a project start?</h3>
+              <span class="text-xl text-white/40 transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-xl pb-5 text-sm leading-6 text-white/65">A short brief, then a call. You leave with a written scope: what we will build, the boundary around it, how long the first release takes, and how we will know it worked.</p>
+          </details>
+          <details class="group border-b border-white/10">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5">
+              <h3 class="text-base font-medium text-white sm:text-lg">What is inside a custom LLM or RAG engagement?</h3>
+              <span class="text-xl text-white/40 transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-xl pb-5 text-sm leading-6 text-white/65">We structure your source material, retrieve the relevant parts when a question arrives, evaluate answer quality, and place the system where your team or customers already work. Answers can cite their sources. Sensitive actions stay behind an approval.</p>
+          </details>
+          <details class="group border-b border-white/10">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5">
+              <h3 class="text-base font-medium text-white sm:text-lg">What do we receive at launch?</h3>
+              <span class="text-xl text-white/40 transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-xl pb-5 text-sm leading-6 text-white/65">The repository, the accounts, and documentation. If you want us to keep operating ads, experiments, or agents after launch, that is a retainer. It is a choice, separate from the build.</p>
+          </details>
+          <details class="group border-b border-white/10">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5">
+              <h3 class="text-base font-medium text-white sm:text-lg">Where do you work?</h3>
+              <span class="text-xl text-white/40 transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-xl pb-5 text-sm leading-6 text-white/65">With teams remotely. The work lives in writing, on calls, and in regular releases you can use.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="relative overflow-hidden border-t border-white/10" aria-labelledby="contact-title">
+      <div class="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(198,214,255,0.16),transparent_60%)]"></div>
+      <div class="relative mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 sm:py-32 lg:grid-cols-2 lg:items-start">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-white/45">04 — Brief</p>
+          <h2 id="contact-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">Tell us what should work better.</h2>
+          <p class="mt-5 max-w-md text-base leading-7 text-white/65">A website, a product, an ad system, an agent. Send a brief and we will answer with a scope.</p>
+          <ul class="mt-8 space-y-3 text-sm text-white/65">
+            <li class="flex gap-3"><span class="text-white/30" aria-hidden="true">—</span>The offer, in plain language</li>
+            <li class="flex gap-3"><span class="text-white/30" aria-hidden="true">—</span>What is already live</li>
+            <li class="flex gap-3"><span class="text-white/30" aria-hidden="true">—</span>The result you want from the next release</li>
+          </ul>
+          <p class="mt-8 text-sm text-white/55">Prefer to write or call?</p>
+          <p class="mt-3 flex flex-col gap-2 text-sm">
+            <a id="contact-email" class="text-white underline decoration-white/30 underline-offset-4" href="mailto:info@ruahdev.com">info@ruahdev.com</a>
+            <a class="text-white underline decoration-white/30 underline-offset-4" href="tel:+918105671387">+91 8105671387</a>
+          </p>
+        </div>
+
+        <form id="brief" class="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8" action="mailto:info@ruahdev.com" method="post" enctype="text/plain" novalidate>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="name" class="mb-2 block text-sm text-white/70">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required class="w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30" placeholder="Your name">
+              <p id="name-error" class="mt-2 hidden text-sm text-rose-200" role="alert"></p>
+            </div>
+            <div>
+              <label for="email" class="mb-2 block text-sm text-white/70">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30" placeholder="you@company.com">
+              <p id="email-error" class="mt-2 hidden text-sm text-rose-200" role="alert"></p>
+            </div>
+          </div>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="company" class="mb-2 block text-sm text-white/70">Company <span class="text-white/35">(optional)</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" class="w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30" placeholder="Company">
+            </div>
+            <div>
+              <label for="service" class="mb-2 block text-sm text-white/70">What do you need?</label>
+              <select id="service" name="service" required class="w-full rounded-2xl border border-white/10 bg-[#0c0e14] px-4 py-3 text-sm text-white">
+                <option value="">Choose a service</option>
+                <option>Website Development</option>
+                <option>Software Development</option>
+                <option>Workflow Automations</option>
+                <option>Digital Advertising</option>
+                <option>AI Solutions &amp; AI Agents</option>
+                <option>Custom LLM &amp; RAG</option>
+                <option>Analytics &amp; Conversion</option>
+                <option>E-commerce Solutions</option>
+                <option>Not sure yet</option>
+              </select>
+              <p id="service-error" class="mt-2 hidden text-sm text-rose-200" role="alert"></p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <label for="message" class="mb-2 block text-sm text-white/70">Brief</label>
+            <textarea id="message" name="message" rows="5" required class="w-full resize-y rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30" placeholder="What is live today, and what should be true after the next release?"></textarea>
+            <p id="message-error" class="mt-2 hidden text-sm text-rose-200" role="alert"></p>
+          </div>
+          <button type="submit" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-[#07080c] transition hover:bg-white/90">
+            Send the brief
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p id="form-status" class="mt-4 text-sm leading-6 text-white/60" role="status" aria-live="polite"></p>
+          <p class="mt-2 text-xs leading-5 text-white/40">This opens your email app with the brief. Nothing is stored on a server.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div class="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.35fr)_minmax(0,1fr)]">
+      <div>
+        <a href="#top" class="inline-flex items-center">
+          <img src="ruah-logo.png" alt="RUAH" class="h-7 w-auto">
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-6 text-white/55">Ruah means breath. We build the systems that keep a company moving.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-white/40">Practices</p>
+        <ul class="mt-4 space-y-2.5 text-sm text-white/70">
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#website"><i class="fa-solid fa-globe w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>Website development</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#software"><i class="fa-solid fa-laptop-code w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>Software development</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#automation"><i class="fa-solid fa-gears w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>Workflow automations</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#advertising"><i class="fa-solid fa-bullhorn w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>Digital advertising</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#ai"><i class="fa-solid fa-robot w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>AI solutions &amp; agents</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#llm"><i class="fa-solid fa-brain w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>Custom LLM &amp; RAG</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#analytics"><i class="fa-solid fa-chart-line w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>Analytics &amp; conversion</a></li>
+          <li><a class="inline-flex items-center gap-2.5 hover:text-white" href="#ecommerce"><i class="fa-solid fa-bag-shopping w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>E-commerce</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-white/40">Contact</p>
+        <ul class="mt-4 space-y-3 text-sm text-white/80">
+          <li>
+            <a class="inline-flex items-center gap-2.5 hover:text-white" href="mailto:info@ruahdev.com">
+              <i class="fa-solid fa-envelope w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>
+              <span class="underline decoration-white/30 underline-offset-4">info@ruahdev.com</span>
+            </a>
+          </li>
+          <li>
+            <a class="inline-flex items-center gap-2.5 hover:text-white" href="tel:+918105671387">
+              <i class="fa-solid fa-phone w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>
+              <span class="underline decoration-white/30 underline-offset-4">+91 8105671387</span>
+            </a>
+          </li>
+          <li class="inline-flex items-center gap-2.5 text-white/70">
+            <i class="fa-solid fa-location-dot w-4 text-center text-[13px] text-white/45" aria-hidden="true"></i>
+            <span>Bangalore, Karnataka, India</span>
+          </li>
+        </ul>
+        <p class="mt-4 text-sm leading-6 text-white/55">Working with companies remotely. Projects run in writing, on calls, and in releases.</p>
+      </div>
+    </div>
+    <div class="overflow-hidden px-5 py-4 sm:px-8">
+      <img src="ruah-logo.png" alt="" class="mx-auto w-full max-w-5xl select-none opacity-[0.16]" aria-hidden="true">
+    </div>
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <p>© 2026 RUAH. All rights reserved.</p>
+      <a href="#top" class="inline-flex items-center gap-2 hover:text-white"><i class="fa-solid fa-arrow-up text-[11px]" aria-hidden="true"></i>Back to top</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script>
+    (function () {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const loader = document.getElementById("loader");
+      const started = performance.now();
+      let opened = false;
+
+      function finishLoader() {
+        if (opened) return;
+        opened = true;
+        if (loader) {
+          loader.classList.add("is-done");
+          loader.setAttribute("aria-hidden", "true");
+        }
+        document.documentElement.classList.remove("is-loading");
+      }
+
+      if (reduce) finishLoader();
+      else {
+        window.addEventListener("load", function () {
+          setTimeout(finishLoader, Math.max(0, 1150 - (performance.now() - started)));
+        });
+        setTimeout(finishLoader, 3200);
+      }
+
+      if (!reduce) {
+        const seen = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-in");
+            seen.unobserve(entry.target);
+          });
+        }, { threshold: 0.18, rootMargin: "0px 0px -6% 0px" });
+
+        const groups = [
+          "#services > .max-w-2xl",
+          "#services .grid > a",
+          "[aria-labelledby='proof-title'] > .relative",
+          "#start .max-w-2xl",
+          "#start .grid > article",
+          "#stories .text-center",
+          "#stories .grid > article",
+          "#stories .grid > div",
+          "#faq .max-w-2xl",
+          "#faq details",
+          "#contact .grid > div",
+          "footer > .grid > div"
+        ];
+        const pieces = Array.prototype.slice.call(document.querySelectorAll(groups.join(",")));
+        const byParent = new Map();
+        pieces.forEach(function (el) {
+          const list = byParent.get(el.parentElement) || [];
+          list.push(el);
+          byParent.set(el.parentElement, list);
+        });
+        pieces.forEach(function (el) {
+          const index = byParent.get(el.parentElement).indexOf(el);
+          el.style.transitionDelay = Math.min(index, 8) * 70 + "ms";
+          el.classList.add("rise");
+          seen.observe(el);
+        });
+
+        const chart = document.querySelector(".stat-chart");
+        if (chart) {
+          chart.querySelectorAll(".stat-bar").forEach(function (bar, index) {
+            bar.style.transitionDelay = Math.min(index, 40) * 12 + "ms";
+          });
+          chart.classList.add("is-armed");
+          seen.observe(chart);
+        }
+      }
+
+      if (!reduce && typeof Lenis !== "undefined") {
+        const lenis = new Lenis({ duration: 1.05, smoothWheel: true, wheelMultiplier: 0.85, touchMultiplier: 1 });
+        function frame(time) {
+          lenis.raf(time);
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+        document.querySelectorAll("a[href^='#']").forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            const id = link.getAttribute("href");
+            if (!id || id.length < 2) return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            event.preventDefault();
+            lenis.scrollTo(target, { offset: -88, duration: 1.15 });
+          });
+        });
+      }
+
+      const reel = document.getElementById("hero-reel");
+      if (reel && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        reel.removeAttribute("autoplay");
+        reel.pause();
+      }
+
+      const emailLink = document.getElementById("contact-email");
+      const form = document.getElementById("brief");
+      const status = document.getElementById("form-status");
+      const contact = emailLink ? emailLink.textContent.trim() : "info@ruahdev.com";
+
+      function setError(id, message) {
+        const field = document.getElementById(id);
+        const error = document.getElementById(id + "-error");
+        if (!field || !error) return;
+        field.setAttribute("aria-invalid", message ? "true" : "false");
+        error.textContent = message || "";
+        error.classList.toggle("hidden", !message);
+      }
+
+      document.querySelectorAll("[data-service]").forEach(function (link) {
+        link.addEventListener("click", function () {
+          const select = document.getElementById("service");
+          const value = link.getAttribute("data-service");
+          if (!select || !value) return;
+          const match = Array.prototype.some.call(select.options, function (option) {
+            return option.value === value;
+          });
+          if (match) {
+            select.value = value;
+            setError("service", "");
+          }
+        });
+      });
+
+      document.querySelectorAll("details a[href^='#']").forEach(function (link) {
+        link.addEventListener("click", function () {
+          const details = link.closest("details");
+          if (details) details.open = false;
+        });
+      });
+
+      if (!form) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const data = new FormData(form);
+        const name = String(data.get("name") || "").trim();
+        const email = String(data.get("email") || "").trim();
+        const company = String(data.get("company") || "").trim();
+        const service = String(data.get("service") || "").trim();
+        const message = String(data.get("message") || "").trim();
+        let firstInvalid = null;
+
+        function check(id, valid, messageText) {
+          setError(id, valid ? "" : messageText);
+          if (!valid && !firstInvalid) firstInvalid = document.getElementById(id);
+        }
+
+        check("name", name.length > 1, "Please enter your name.");
+        check("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), "Please enter a valid email.");
+        check("service", service !== "", "Please choose a service.");
+        check("message", message.length >= 12, "Share a little more about the work.");
+
+        if (firstInvalid) {
+          status.textContent = "";
+          firstInvalid.focus();
+          return;
+        }
+
+        const subject = encodeURIComponent("Project brief — " + name);
+        const body = encodeURIComponent(
+          "Name: " + name + "\n" +
+          "Email: " + email + "\n" +
+          "Company: " + (company || "—") + "\n" +
+          "Service: " + service + "\n\n" +
+          message
+        );
+        window.location.href = "mailto:" + contact + "?subject=" + subject + "&body=" + body;
+        status.textContent = "Your email app should open with this brief addressed to " + contact + ". If nothing opens, email that address directly.";
+      });
+    })();
+  </script>
+</body>
+</html>
