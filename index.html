@@ -165,6 +165,25 @@
     .pulse-glow { animation: glow 6s ease-in-out infinite; }
     .animate-marquee { animation: marquee 42s linear infinite; }
     .marquee-wrap:hover .animate-marquee { animation-play-state: paused; }
+    @media (max-width: 639px) {
+      .service-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows .45s ease;
+      }
+      .service-card.is-open .service-body { grid-template-rows: 1fr; }
+      .service-body-inner { overflow: hidden; }
+      .service-chevron { transition: opacity .2s ease; }
+      .service-card.is-open .service-chevron { opacity: 0; }
+    }
+    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+      .service-body { grid-template-rows: 1fr; transition: none; }
+      .service-chevron { transition: none; }
+    }
+    .hero-still {
+      -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+    }
     #loader {
       position: fixed;
       inset: 0;
@@ -288,23 +307,27 @@
   </header>
 
   <main id="main">
-    <section class="relative overflow-hidden pt-8 sm:pt-14 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:flex-col lg:pt-12" aria-labelledby="hero-title">
+    <section class="relative overflow-hidden pt-0 sm:pt-14 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:flex-col lg:pt-12" aria-labelledby="hero-title">
       <div class="pointer-events-none absolute inset-x-0 top-0 h-[760px] bg-[radial-gradient(ellipse_at_top,rgba(198,214,255,0.18),transparent_52%)]"></div>
-      <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:84px_84px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]"></div>
+      <div class="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:84px_84px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)] sm:block"></div>
 
-      <div class="hero-copy relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
-        <h1 id="hero-title" class="font-display mx-auto max-w-4xl text-[2.35rem] leading-[1.08] text-white sm:text-6xl sm:leading-[1.1] lg:text-[4.7rem]">
-          We build the systems your company runs on.
+      <img src="RUAH Systems in Motion.avif" alt="RUAH websites and products on laptop and phone screens" width="968" height="728" class="hero-still relative z-10 -mb-8 block w-full sm:hidden">
+
+      <div class="hero-copy relative z-10 mx-auto mt-6 max-w-4xl px-6 text-center sm:mt-0 sm:px-8">
+        <h1 id="hero-title" class="font-display mx-auto max-w-4xl text-[clamp(1.45rem,7.2vw,2rem)] leading-[1.15] text-white sm:text-6xl sm:leading-[1.1] lg:text-[4.7rem]">
+          <span class="sm:hidden">We build the systems<br>your company runs on.</span>
+          <span class="hidden sm:inline">We build the systems your company runs on.</span>
         </h1>
-        <p class="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-white/65 sm:mt-5 sm:text-lg sm:leading-7">
-          Ruah designs and ships websites, software, automations, advertising, and AI. The pieces are built to work together, from the first click to the work that happens after someone says yes.
+        <p class="mx-auto mt-5 max-w-[18rem] text-pretty text-[15px] leading-6 text-white/60 sm:mt-5 sm:max-w-2xl sm:text-lg sm:leading-7">
+          <span class="sm:hidden">Websites, software, ads, and AI, built to work as one system.</span>
+          <span class="hidden sm:inline">Ruah designs and ships websites, software, automations, advertising, and AI. The pieces are built to work together, from the first click to the work that happens after someone says yes.</span>
         </p>
-        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="#contact" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-[#07080c] transition hover:bg-white/90 sm:w-auto">
-            Start a project
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="mt-6 flex items-center justify-center gap-2 sm:gap-3">
+          <a href="#contact" class="inline-flex min-w-0 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3 py-3 text-[13px] font-medium text-[#07080c] transition hover:bg-white/90 sm:w-auto sm:flex-none sm:gap-2 sm:px-5 sm:text-sm">
+            Get in touch
+            <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#services" class="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm text-white/85 transition hover:bg-white/5 sm:w-auto">Explore the practices</a>
+          <a href="#services" class="inline-flex min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-full border border-white/15 px-3 py-3 text-[13px] text-white/85 transition hover:bg-white/5 sm:w-auto sm:flex-none sm:px-5 sm:text-sm">Our services</a>
         </div>
       </div>
 
@@ -345,66 +368,129 @@
       </div>
     </section>
 
-    <section id="services" class="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32" aria-labelledby="services-title">
+    <section id="services" class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="services-title">
       <div class="max-w-2xl">
-        <p class="text-xs uppercase tracking-[0.28em] text-white/45">01 — Services</p>
-        <h2 id="services-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">What we build.</h2>
+        <h2 id="services-title" class="font-display text-4xl leading-[1.1] text-white sm:text-6xl">What we build.</h2>
         <p class="mt-5 text-base leading-7 text-white/65 sm:text-lg">Eight services, designed to work as one system. From the first visit to the work that happens after.</p>
       </div>
 
-      <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <a id="website" href="#contact" data-service="Website Development" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">Website Development</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Marketing sites and landing pages built for speed, clarity, and the click that follows an ad.</p>
-        </a>
+      <div class="mt-14 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <article id="website" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="Website Development" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">Website Development</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">Website Development</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Marketing sites and landing pages built for speed, clarity, and the click that follows an ad.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="software" href="#contact" data-service="Software Development" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9l-2.5 3L8 15M12 15h5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">Software Development</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Internal tools, portals, and products shaped around the way your team actually works.</p>
-        </a>
+        <article id="software" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="Software Development" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">Software Development</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9l-2.5 3L8 15M12 15h5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">Software Development</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Internal tools, portals, and products shaped around the way your team actually works.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="automation" href="#contact" data-service="Workflow Automations" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="18" cy="17" r="2"/><path d="M8 12h8M8.2 11.2 16 8.2M8.2 12.8 16 15.8" stroke-linecap="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">Workflow Automation</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">The handoffs between your tools, carried by the system, including the exceptions.</p>
-        </a>
+        <article id="automation" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="Workflow Automations" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">Workflow Automation</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="18" cy="17" r="2"/><path d="M8 12h8M8.2 11.2 16 8.2M8.2 12.8 16 15.8" stroke-linecap="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">Workflow Automation</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">The handoffs between your tools, carried by the system, including the exceptions.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="advertising" href="#contact" data-service="Digital Advertising" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10v4h3l5 3V7L7 10H4z" stroke-linejoin="round"/><path d="M16 9.2a3.8 3.8 0 0 1 0 5.6" stroke-linecap="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">Google &amp; Meta Ads</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Search and social planned with the page, the offer, and the conversion in one loop.</p>
-        </a>
+        <article id="advertising" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="Digital Advertising" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">Google and Meta Ads</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10v4h3l5 3V7L7 10H4z" stroke-linejoin="round"/><path d="M16 9.2a3.8 3.8 0 0 1 0 5.6" stroke-linecap="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">Google &amp; Meta Ads</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Search and social planned with the page, the offer, and the conversion in one loop.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="ai" href="#contact" data-service="AI Solutions &amp; AI Agents" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3.5 13.1 9 18.5 12 13.1 15 12 20.5 10.9 15 5.5 12 10.9 9 12 3.5z" stroke-linejoin="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">AI Agents</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Assistants that qualify, answer, and take the next step, with a person approving what matters.</p>
-        </a>
+        <article id="ai" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="AI Solutions &amp; AI Agents" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">AI Agents</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3.5 13.1 9 18.5 12 13.1 15 12 20.5 10.9 15 5.5 12 10.9 9 12 3.5z" stroke-linejoin="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">AI Agents</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Assistants that qualify, answer, and take the next step, with a person approving what matters.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="llm" href="#contact" data-service="Custom LLM &amp; RAG" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 7.5 12 12l8-4.5L12 3zM4 12.5 12 17l8-4.5M4 16.5 12 21l8-4.5" stroke-linejoin="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">Custom LLM &amp; RAG</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Models that answer from your documents, catalog, and policies, and show the source.</p>
-        </a>
+        <article id="llm" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="Custom LLM &amp; RAG" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">Custom LLM and RAG</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 7.5 12 12l8-4.5L12 3zM4 12.5 12 17l8-4.5M4 16.5 12 21l8-4.5" stroke-linejoin="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">Custom LLM &amp; RAG</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Models that answer from your documents, catalog, and policies, and show the source.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="analytics" href="#contact" data-service="Analytics &amp; Conversion" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V11M10 19V6M16 19v-6M3 19h18" stroke-linecap="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">Analytics &amp; Conversion</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Tracking you can trust, then changes to the pages and offers that create revenue.</p>
-        </a>
+        <article id="analytics" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="Analytics &amp; Conversion" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">Analytics and Conversion</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V11M10 19V6M16 19v-6M3 19h18" stroke-linecap="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">Analytics &amp; Conversion</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Tracking you can trust, then changes to the pages and offers that create revenue.</p>
+            </div>
+          </div>
+        </article>
 
-        <a id="ecommerce" href="#contact" data-service="E-commerce Solutions" class="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-6 transition duration-300 hover:border-white/20">
-          <span class="icon-orb" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 8h11l-.8 11H7.3L6.5 8z" stroke-linejoin="round"/><path d="M9 8V7a3 3 0 0 1 6 0v1" stroke-linecap="round"/></svg></span>
-          <h3 class="mt-7 text-[15px] leading-snug text-white">E-commerce</h3>
-          <p class="mt-2 text-sm leading-6 text-white/50">Stores built to be fast and clear, from the catalog through checkout and the note after the order.</p>
-        </a>
+        <article id="ecommerce" class="service-card relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0d1118] p-4 transition duration-300 hover:border-white/20 sm:p-6">
+          <a href="#contact" data-service="E-commerce Solutions" class="absolute inset-0 z-10 hidden rounded-3xl sm:block"><span class="sr-only">E-commerce</span></a>
+          <button type="button" class="service-toggle relative z-20 flex w-full items-center gap-4 text-left sm:contents" aria-expanded="false">
+            <span class="icon-orb shrink-0" aria-hidden="true"><svg class="relative h-[18px] w-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 8h11l-.8 11H7.3L6.5 8z" stroke-linejoin="round"/><path d="M9 8V7a3 3 0 0 1 6 0v1" stroke-linecap="round"/></svg></span>
+            <h3 class="text-[15px] leading-snug text-white sm:mt-7">E-commerce</h3>
+            <span class="service-chevron ml-auto text-xl text-white/40 sm:hidden" aria-hidden="true">+</span>
+          </button>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <p class="pt-3 text-sm leading-6 text-white/50 sm:mt-2 sm:pt-0">Stores built to be fast and clear, from the catalog through checkout and the note after the order.</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="relative overflow-hidden border-y border-white/10" aria-labelledby="proof-title">
-      <div class="relative z-10 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:pb-28 lg:pt-28">
+      <div class="relative z-10 mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 lg:py-20">
         <p class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] py-1 pl-1 pr-3 text-xs text-white/70">
           <span class="icon-orb !h-6 !w-6 shadow-none" aria-hidden="true">
             <svg class="relative h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -412,20 +498,20 @@
           One system, end to end
         </p>
         <h2 id="proof-title" class="font-display mt-6 max-w-xl text-4xl leading-[1.1] text-white sm:text-5xl lg:text-[3.4rem]">Helping companies get more done with one system.</h2>
-        <dl class="mt-10 flex max-w-xl flex-col gap-8 sm:flex-row sm:items-stretch sm:gap-0">
-          <div class="sm:pr-8">
-            <dt class="font-display text-5xl text-white sm:text-6xl">8</dt>
-            <dd class="mt-2 max-w-[9rem] text-sm leading-5 text-white/45">Services, one studio</dd>
+        <dl class="mt-10 flex max-w-xl items-stretch">
+          <div class="min-w-0 flex-1 pr-3 sm:pr-8">
+            <dt class="font-display text-4xl text-white sm:text-6xl">8</dt>
+            <dd class="mt-2 text-xs leading-4 text-white/45 sm:max-w-[9rem] sm:text-sm sm:leading-5">Services, one studio</dd>
           </div>
-          <div class="hidden w-px self-stretch bg-white/15 sm:block" aria-hidden="true"></div>
-          <div class="sm:px-8">
-            <dt class="font-display text-5xl text-white sm:text-6xl">1</dt>
-            <dd class="mt-2 max-w-[9rem] text-sm leading-5 text-white/45">Scope after the first call</dd>
+          <div class="w-px self-stretch bg-white/15" aria-hidden="true"></div>
+          <div class="min-w-0 flex-1 px-3 sm:px-8">
+            <dt class="font-display text-4xl text-white sm:text-6xl">1</dt>
+            <dd class="mt-2 text-xs leading-4 text-white/45 sm:max-w-[9rem] sm:text-sm sm:leading-5">Scope after the first call</dd>
           </div>
-          <div class="hidden w-px self-stretch bg-white/15 sm:block" aria-hidden="true"></div>
-          <div class="sm:pl-8">
-            <dt class="font-display text-5xl text-white sm:text-6xl">2</dt>
-            <dd class="mt-2 max-w-[9rem] text-sm leading-5 text-white/45">Google and Meta</dd>
+          <div class="w-px self-stretch bg-white/15" aria-hidden="true"></div>
+          <div class="min-w-0 flex-1 pl-3 sm:pl-8">
+            <dt class="font-display text-4xl text-white sm:text-6xl">2</dt>
+            <dd class="mt-2 text-xs leading-4 text-white/45 sm:max-w-[9rem] sm:text-sm sm:leading-5">Google and Meta</dd>
           </div>
         </dl>
       </div>
@@ -435,10 +521,9 @@
     </section>
 
     <section id="start" class="border-t border-white/10" aria-labelledby="start-title">
-      <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+      <div class="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
         <div class="max-w-2xl">
-          <p class="text-xs uppercase tracking-[0.28em] text-white/45">02 — Start here</p>
-          <h2 id="start-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">Where should we start?</h2>
+          <h2 id="start-title" class="font-display text-4xl leading-[1.1] text-white sm:text-6xl">Where should we start?</h2>
           <p class="mt-5 text-base leading-7 text-white/65 sm:text-lg">Pick the problem closest to yours. The brief opens with that work already selected.</p>
         </div>
 
@@ -474,7 +559,7 @@
     </section>
 
     <section id="stories" class="border-t border-white/10" aria-labelledby="stories-title">
-      <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+      <div class="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
         <div class="mx-auto max-w-2xl text-center">
           <h2 id="stories-title" class="font-display text-4xl leading-[1.1] text-white sm:text-6xl">Real work. Clear results.</h2>
           <p class="mt-4 text-sm leading-6 text-white/55 sm:text-base">Teams use Ruah when the site, the ads, and the follow-through need to work as one system.</p>
@@ -551,10 +636,9 @@
     </section>
 
     <section id="faq" class="border-t border-white/10" aria-labelledby="faq-title">
-      <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 sm:py-32 lg:grid-cols-[0.8fr_1.2fr]">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
-          <p class="text-xs uppercase tracking-[0.28em] text-white/45">03 — Questions</p>
-          <h2 id="faq-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">Before the first call.</h2>
+          <h2 id="faq-title" class="font-display text-4xl leading-[1.1] text-white sm:text-6xl">Before the first call.</h2>
         </div>
         <div class="border-t border-white/10">
           <details class="group border-b border-white/10" open>
@@ -605,10 +689,9 @@
 
     <section id="contact" class="relative overflow-hidden border-t border-white/10" aria-labelledby="contact-title">
       <div class="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(198,214,255,0.16),transparent_60%)]"></div>
-      <div class="relative mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 sm:py-32 lg:grid-cols-2 lg:items-start">
+      <div class="relative mx-auto grid max-w-6xl gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-2 lg:items-start">
         <div>
-          <p class="text-xs uppercase tracking-[0.28em] text-white/45">04 — Brief</p>
-          <h2 id="contact-title" class="font-display mt-4 text-4xl leading-[1.1] text-white sm:text-6xl">Tell us what should work better.</h2>
+          <h2 id="contact-title" class="font-display text-4xl leading-[1.1] text-white sm:text-6xl">Tell us what should work better.</h2>
           <p class="mt-5 max-w-md text-base leading-7 text-white/65">A website, a product, an ad system, an agent. Send a brief and we will answer with a scope.</p>
           <ul class="mt-8 space-y-3 text-sm text-white/65">
             <li class="flex gap-3"><span class="text-white/30" aria-hidden="true">—</span>The offer, in plain language</li>
@@ -788,6 +871,55 @@
           el.classList.add("rise");
           seen.observe(el);
         });
+
+        const serviceCards = Array.prototype.slice.call(document.querySelectorAll("#services .service-card"));
+        let serviceCursor = 0;
+        let serviceTimer = 0;
+
+        function setServiceOpen(card, open) {
+          card.classList.toggle("is-open", open);
+          const toggle = card.querySelector(".service-toggle");
+          if (toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        function openServicesInView() {
+          if (!window.matchMedia("(max-width: 639px)").matches) return;
+          if (serviceCursor >= serviceCards.length) return;
+          const card = serviceCards[serviceCursor];
+          if (card.classList.contains("is-open")) {
+            serviceCursor += 1;
+            openServicesInView();
+            return;
+          }
+          const rect = card.getBoundingClientRect();
+          if (rect.top > window.innerHeight * 0.82) return;
+          setServiceOpen(card, true);
+          serviceCursor += 1;
+          window.clearTimeout(serviceTimer);
+          serviceTimer = window.setTimeout(openServicesInView, 340);
+        }
+
+        serviceCards.forEach(function (card) {
+          const toggle = card.querySelector(".service-toggle");
+          if (!toggle) return;
+          toggle.addEventListener("click", function () {
+            if (!window.matchMedia("(max-width: 639px)").matches) return;
+            const open = !card.classList.contains("is-open");
+            setServiceOpen(card, open);
+            if (open) {
+              const index = serviceCards.indexOf(card);
+              if (index >= serviceCursor) serviceCursor = index + 1;
+            }
+          });
+        });
+
+        if (reduce) {
+          serviceCards.forEach(function (card) { setServiceOpen(card, true); });
+        } else {
+          window.addEventListener("scroll", openServicesInView, { passive: true });
+          window.addEventListener("load", openServicesInView);
+          openServicesInView();
+        }
 
         const chart = document.querySelector(".stat-chart");
         if (chart) {
